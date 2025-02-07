@@ -1,0 +1,4 @@
+POST localhost:8080/stuff/create
+Content-Type: x-www-form-urlencoded
+
+name=blablbalba&description=stuff is great

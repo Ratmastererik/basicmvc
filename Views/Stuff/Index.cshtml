@@ -1,0 +1,145 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<Stuff>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Stuff - 1997 Edition</title>
+    <style>
+        body {
+            background: url('https://www.transparenttextures.com/patterns/old-mathematics.png');
+            color: #00FF00;
+            font-family: Comic Sans MS, cursive;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 50px;
+            color: yellow;
+            text-shadow: 2px 2px red;
+            animation: blink 0.8s infinite alternate;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            border: 5px solid red;
+            background: black;
+            padding: 20px;
+        }
+
+        .stuff-item {
+            border: 2px dashed lime;
+            padding: 10px;
+            margin: 10px;
+            background-color: darkblue;
+            color: yellow;
+        }
+
+        table {
+            width: 100%;
+            border: 3px solid magenta;
+            background: blue;
+            color: white;
+        }
+
+        td,
+        th {
+            border: 1px solid white;
+            padding: 10px;
+        }
+
+        input,
+        button {
+            font-family: Comic Sans MS;
+            background: magenta;
+            color: white;
+            border: 3px solid cyan;
+            padding: 5px;
+        }
+
+        button:hover {
+            background: cyan;
+            color: black;
+            font-weight: bold;
+        }
+
+        a {
+            color: yellow;
+            font-weight: bold;
+            text-decoration: none;
+            background: red;
+            padding: 5px;
+            border: 2px solid white;
+        }
+
+        a:hover {
+            background: yellow;
+            color: red;
+        }
+
+        marquee {
+            font-size: 20px;
+            color: hotpink;
+            font-weight: bold;
+        }
+
+        .blink {
+            animation: blink 0.5s infinite alternate;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1>🔥 STUFF 🔥</h1>
+
+        <img src="https://gifdb.com/images/high/hot-fire-text-glow-transparent-gif-h5cfvtjsbrf7rccq.gif" width="200px">
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var stuff in Model)
+            {
+                <tr>
+                    <td>@stuff.Name (@stuff.Id)</td>
+                    <td>@stuff.Description</td>
+                    <td>@stuff.Price</td>
+                    <td>@stuff.Amount</td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@stuff.Id">❌ Delete</a>
+                        <form method="get" asp-action="Delete" asp-route-id="@stuff.Id" style="display:inline;">
+                            <button type="submit">❌ Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <h2 class="blink">🤯 Want to Add More Stuff? 🤯</h2>
+
+        <form method="post" action="stuff/create">
+            <input type="text" name="Name" placeholder="Skriv namn här..." required>
+            <input type="text" name="Description" placeholder="Skriv beskrivning här...">
+            <input type="number" name="Price" placeholder="Priset" required>
+            <button type="submit">💾 Add Stuff 💾</button>
+        </form>
+
+        <img src="https://media1.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" width="200px">
+    </div>
+
+
+</body>
+
+</html>
