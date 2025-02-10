@@ -16,11 +16,11 @@ public class StuffController : Controller //BaseController <- API
         return View(await _stuffService.GetStuffAsync());
     }
 
-    public async Task<IActionResult> Create(Stuff stuff)
+    public async Task<IActionResult> Create(Post post)
     {
         if (ModelState.IsValid)
         {
-            await _stuffService.AddStuffAsync(stuff);
+            await _stuffService.AddStuffAsync(post);
         }
 
         return RedirectToAction("Index");
